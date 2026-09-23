@@ -8,14 +8,13 @@ export function entries() {
 	return locales.filter((l) => l.code !== defaultLocale).map((l) => ({ lang: l.code }));
 }
 
-export const load: PageLoad = ({ params, url }) => {
+export const load: PageLoad = ({ params }) => {
 	const doc = getDoc('', params.lang);
 	if (!doc) throw error(404, 'Documentation index not found');
 
 	return {
 		meta: doc.meta,
 		slug: '',
-		locale: params.lang,
-		pathname: url.pathname
+		locale: params.lang
 	};
 };

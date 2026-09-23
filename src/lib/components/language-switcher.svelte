@@ -1,21 +1,33 @@
 <script lang="ts">
+	import { base } from '$app/paths';
 	import { page } from '$app/state';
 	import { docsConfig } from '$lib/docs/config.js';
-	import { getLocaleFromPath, hrefForLocale } from '$lib/docs/locale.js';
+	import { getLocaleFromPath } from '$lib/docs/locale.js';
 	import { cn } from '$lib/utils.js';
 
 	let {
-		locale: localeProp,
-		pathname: pathnameProp
+		locale: localeProp
 	}: {
 		locale?: string;
-		pathname?: string;
 	} = $props();
 
 	let i18n = docsConfig.i18n;
 
-	let pathname = $derived(pathnameProp ?? page.url.pathname);
-	let currentLocale = $derived(localeProp ?? getLocaleFromPath(pathname));
+	let currentLocale = $derived(
+		localeProp ?? (page.data.locale as string | undefined) ?? getLocaleFromPath(page.url.pathname)
+	);
+
+	/** Prefer page load slug — layout url.pathname drops the slug when paths.base is set. */
+	let slug = $derived(
+		typeof page.data.slug === 'string' ? (page.data.slug as string) : ''
+	);
+
+	function hrefForLocale(code: string): string {
+		const def = i18n?.defaultLocale ?? 'ja';
+		const suffix = slug ? `/${slug}` : '';
+		const path = code === def ? `/docs${suffix}` : `/docs/${code}${suffix}`;
+		return `${base}${path}`;
+	}
 </script>
 
 {#if i18n && i18n.locales.length > 1}
@@ -27,7 +39,7 @@
 		{#each i18n.locales as locale (locale.code)}
 			{@const active = currentLocale === locale.code}
 			<a
-				href={hrefForLocale(pathname, locale.code)}
+				href={hrefForLocale(locale.code)}
 				class={cn(
 					'rounded-sm px-2.5 py-1 font-medium transition-colors',
 					active

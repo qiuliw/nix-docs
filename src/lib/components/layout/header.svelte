@@ -7,12 +7,10 @@
 
 	let {
 		socialLinks = [],
-		locale,
-		pathname
+		locale
 	}: {
 		socialLinks?: SocialLink[];
 		locale?: string;
-		pathname?: string;
 	} = $props();
 </script>
 
@@ -25,7 +23,7 @@
 		<div class="hidden items-center md:flex">
 			<SocialLinks links={socialLinks} />
 		</div>
-		<LanguageSwitcher {locale} {pathname} />
+		<LanguageSwitcher {locale} />
 		<DarkModeSwitcher />
 	</div>
 </header>

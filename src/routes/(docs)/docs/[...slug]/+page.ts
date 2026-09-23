@@ -8,7 +8,7 @@ export function entries() {
 		.map((doc) => ({ slug: doc.slug }));
 }
 
-export const load: PageLoad = ({ params, url }) => {
+export const load: PageLoad = ({ params }) => {
 	const doc = getDoc(params.slug);
 	if (!doc) throw error(404, `Page not found: ${params.slug}`);
 
@@ -17,7 +17,6 @@ export const load: PageLoad = ({ params, url }) => {
 	return {
 		meta: doc.meta,
 		slug: params.slug,
-		pathname: url.pathname,
 		prev,
 		next,
 		rawContent: getRawContent(params.slug)
