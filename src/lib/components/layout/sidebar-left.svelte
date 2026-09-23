@@ -24,7 +24,7 @@
 
 	let locale = $derived(getLocaleFromPath(page.url.pathname));
 	let homeHref = $derived(docsHomeHref(locale));
-	let docsLabel = $derived(locale === 'zh' ? '文档' : 'Documentation');
+	let docsLabel = $derived(locale === 'zh' ? '文档' : 'ドキュメント');
 
 	function isActive(href: string | undefined): boolean {
 		if (!href) return false;

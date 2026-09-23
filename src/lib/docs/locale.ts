@@ -16,11 +16,13 @@ export function getLocaleFromPath(pathname: string): string {
 	const i18n = docsConfig.i18n;
 	if (!i18n) return 'ja';
 	const parts = appPathname(pathname).split('/').filter(Boolean);
-	const codes = new Set(localeCodes());
-	if (parts[0] === 'docs' && parts[1] && codes.has(parts[1])) {
+	const def = i18n.defaultLocale;
+	// Only non-default locales appear as /docs/{lang}/...
+	const prefixed = new Set(localeCodes().filter((c) => c !== def));
+	if (parts[0] === 'docs' && parts[1] && prefixed.has(parts[1])) {
 		return parts[1];
 	}
-	return i18n.defaultLocale;
+	return def;
 }
 
 /** Docs home for a locale: /docs or /docs/{lang} (includes kit base). */
@@ -38,12 +40,12 @@ export function hrefForLocale(pathname: string, code: string): string {
 	if (!i18n) return `${base}/docs`;
 
 	const parts = appPathname(pathname).split('/').filter(Boolean);
-	const codes = new Set(localeCodes());
 	const def = i18n.defaultLocale;
+	const prefixed = new Set(localeCodes().filter((c) => c !== def));
 
 	let rest: string[] = [];
 	if (parts[0] === 'docs') {
-		if (parts[1] && codes.has(parts[1])) {
+		if (parts[1] && prefixed.has(parts[1])) {
 			rest = parts.slice(2);
 		} else {
 			rest = parts.slice(1);

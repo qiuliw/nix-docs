@@ -15,19 +15,19 @@ export const docsConfig: DocsConfig = {
 	sidebar: [
 		{
 			label: 'Nix入門',
-			labels: { zh: 'Nix 入门' },
+			labels: { ja: 'Nix入門', zh: 'Nix 入门' },
 			icon: BookOpenIcon,
 			autogenerate: { directory: 'nix-introduction' }
 		},
 		{
 			label: 'Nix入門: ハンズオン編',
-			labels: { zh: 'Nix 入门：实战篇' },
+			labels: { ja: 'Nix入門: ハンズオン編', zh: 'Nix 入门：实战篇' },
 			icon: FlaskConicalIcon,
 			autogenerate: { directory: 'nix-hands-on' }
 		},
 		{
 			label: '記事',
-			labels: { zh: '文章' },
+			labels: { ja: '記事', zh: '文章' },
 			icon: NewspaperIcon,
 			autogenerate: { directory: 'articles' }
 		}
