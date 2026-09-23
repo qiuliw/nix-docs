@@ -4,10 +4,11 @@ import type { DocsConfig } from './types.js';
 
 export const docsConfig: DocsConfig = {
 	site: {
-		title: 'Documentation',
-		description: 'A modern documentation starter built with SvelteKit.',
+		title: 'Nix Docs',
+		description: 'Nix documentation built with SvelteKit.',
+		url: 'https://qiuliw.github.io/nix-docs',
 		social: {
-			github: 'https://github.com/code-gio/svelte-docs-starter'
+			github: 'https://github.com/qiuliw/nix-docs'
 		}
 	},
 	sidebar: [

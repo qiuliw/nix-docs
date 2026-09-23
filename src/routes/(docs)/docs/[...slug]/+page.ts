@@ -1,6 +1,12 @@
-import { getDoc, getPrevNext, getRawContent } from '$lib/docs/index.js';
+import { getDoc, getAllDocs, getPrevNext, getRawContent } from '$lib/docs/index.js';
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types.js';
+
+export function entries() {
+	return getAllDocs()
+		.filter((doc) => doc.slug)
+		.map((doc) => ({ slug: doc.slug }));
+}
 
 export const load: PageLoad = ({ params }) => {
 	const doc = getDoc(params.slug);

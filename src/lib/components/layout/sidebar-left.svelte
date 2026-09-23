@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from "$app/state";
+	import { resolve } from "$app/paths";
 	import * as Collapsible from "$lib/components/ui/collapsible/index.js";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import { docsConfig } from "$lib/docs/config.js";
@@ -77,7 +78,7 @@
 				{:else}
 					<Sidebar.MenuButton size="lg">
 						{#snippet child({ props })}
-							<a href="/docs" {...props}>
+							<a href={resolve("/docs")} {...props}>
 								<div
 									class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
 								>

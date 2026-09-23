@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 	import { docsConfig } from '$lib/docs/config.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
@@ -9,9 +10,17 @@
 
 	let i18n = docsConfig.i18n;
 
+	function appPathname(): string {
+		const pathname = page.url.pathname;
+		if (base && pathname.startsWith(base)) {
+			return pathname.slice(base.length) || '/';
+		}
+		return pathname;
+	}
+
 	function getCurrentLocale(): string {
 		if (!i18n) return 'en';
-		const pathParts = page.url.pathname.split('/').filter(Boolean);
+		const pathParts = appPathname().split('/').filter(Boolean);
 		// Check if first segment after /docs is a locale code
 		if (pathParts[0] === 'docs' && pathParts[1]) {
 			const match = i18n.locales.find((l) => l.code === pathParts[1]);
@@ -23,7 +32,7 @@
 	function switchLocale(code: string) {
 		if (!i18n) return;
 		const currentLocale = getCurrentLocale();
-		const pathname = page.url.pathname;
+		const pathname = appPathname();
 
 		if (code === i18n.defaultLocale) {
 			// Remove locale prefix

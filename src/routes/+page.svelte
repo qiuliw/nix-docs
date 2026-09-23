@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from "$app/paths";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import DarkModeSwitcher from "$lib/components/theme/dark-mode-switcher.svelte";
 	import ArrowRightIcon from "@lucide/svelte/icons/arrow-right";
@@ -160,13 +161,13 @@
 			<span class="text-lg font-bold">Svelte Docs Starter</span>
 		</div>
 		<div class="hidden items-center gap-6 md:flex">
-			<a href="/" class="text-foreground text-sm font-medium">Home</a>
-			<a href="/docs" class="text-muted-foreground hover:text-foreground text-sm">Documentation</a>
-			<a href="/docs" class="text-muted-foreground hover:text-foreground text-sm">Get Started</a>
+			<a href={resolve("/")} class="text-foreground text-sm font-medium">Home</a>
+			<a href={resolve("/docs")} class="text-muted-foreground hover:text-foreground text-sm">Documentation</a>
+			<a href={resolve("/docs")} class="text-muted-foreground hover:text-foreground text-sm">Get Started</a>
 		</div>
 		<div class="flex items-center gap-2">
 			<DarkModeSwitcher />
-			<Button variant="ghost" size="icon" href="https://github.com/code-gio/svelte-docs-starter" target="_blank" aria-label="GitHub">
+			<Button variant="ghost" size="icon" href="https://github.com/qiuliw/nix-docs" target="_blank" aria-label="GitHub">
 				<GithubIcon class="size-4" />
 			</Button>
 		</div>
@@ -191,11 +192,11 @@
 			Write in Markdown, style with components, deploy anywhere.
 		</p>
 		<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-			<Button size="lg" href="/docs" class="gap-2 px-6">
+			<Button size="lg" href={resolve("/docs")} class="gap-2 px-6">
 				Get Started
 				<ArrowRightIcon class="size-4" />
 			</Button>
-			<Button variant="outline" size="lg" href="https://github.com/code-gio/svelte-docs-starter" target="_blank" class="gap-2 px-6">
+			<Button variant="outline" size="lg" href="https://github.com/qiuliw/nix-docs" target="_blank" class="gap-2 px-6">
 				<GithubIcon class="size-4" />
 				View on GitHub
 			</Button>
@@ -301,11 +302,11 @@
 				Clone the starter, add your content, and ship. Open source, free forever.
 			</p>
 			<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-				<Button size="lg" href="/docs" class="gap-2 px-6">
+				<Button size="lg" href={resolve("/docs")} class="gap-2 px-6">
 					Get Started
 					<ArrowRightIcon class="size-4" />
 				</Button>
-				<Button variant="outline" size="lg" href="https://github.com/code-gio/svelte-docs-starter" target="_blank" class="gap-2 px-6">
+				<Button variant="outline" size="lg" href="https://github.com/qiuliw/nix-docs" target="_blank" class="gap-2 px-6">
 					<GithubIcon class="size-4" />
 					View on GitHub
 				</Button>
@@ -321,10 +322,10 @@
 			<div>
 				<h4 class="text-foreground mb-4 text-sm font-semibold">Documentation</h4>
 				<ul class="space-y-3">
-					<li><a href="/docs" class="text-muted-foreground hover:text-foreground text-sm">Getting Started</a></li>
-					<li><a href="/docs" class="text-muted-foreground hover:text-foreground text-sm">Configuration</a></li>
-					<li><a href="/docs" class="text-muted-foreground hover:text-foreground text-sm">Writing Content</a></li>
-					<li><a href="/docs" class="text-muted-foreground hover:text-foreground text-sm">Deployment</a></li>
+					<li><a href={resolve("/docs")} class="text-muted-foreground hover:text-foreground text-sm">Getting Started</a></li>
+					<li><a href={resolve("/docs")} class="text-muted-foreground hover:text-foreground text-sm">Configuration</a></li>
+					<li><a href={resolve("/docs")} class="text-muted-foreground hover:text-foreground text-sm">Writing Content</a></li>
+					<li><a href={resolve("/docs")} class="text-muted-foreground hover:text-foreground text-sm">Deployment</a></li>
 				</ul>
 			</div>
 			<div>
@@ -349,18 +350,18 @@
 				<h4 class="text-foreground mb-4 text-sm font-semibold">Project</h4>
 				<ul class="space-y-3">
 					<li>
-						<a href="https://github.com/code-gio/svelte-docs-starter" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm">
+						<a href="https://github.com/qiuliw/nix-docs" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm">
 							<GithubIcon class="size-3.5" /> GitHub
 						</a>
 					</li>
-					<li><a href="https://github.com/code-gio/svelte-docs-starter/issues" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm">Report an Issue <ExternalLinkIcon class="size-3" /></a></li>
-					<li><a href="https://github.com/code-gio/svelte-docs-starter/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm">License <ExternalLinkIcon class="size-3" /></a></li>
+					<li><a href="https://github.com/qiuliw/nix-docs/issues" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm">Report an Issue <ExternalLinkIcon class="size-3" /></a></li>
+					<li><a href="https://github.com/qiuliw/nix-docs/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-sm">License <ExternalLinkIcon class="size-3" /></a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="text-muted-foreground mt-12 border-t pt-8 text-center text-sm">
 			Built with SvelteKit, Tailwind CSS, and shadcn-svelte by
-			<a href="https://github.com/code-gio" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">Codegio</a>
+			<a href="https://github.com/qiuliw" target="_blank" rel="noopener noreferrer" class="text-foreground hover:underline">qiuliw</a>
 		</div>
 	</div>
 </footer>

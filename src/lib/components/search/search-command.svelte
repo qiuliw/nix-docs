@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import { base } from "$app/paths";
 	import SearchIcon from "@lucide/svelte/icons/search";
 	import FileTextIcon from "@lucide/svelte/icons/file-text";
 	import { Button } from "$lib/components/ui/button/index.js";
@@ -26,7 +27,7 @@
 		try {
 			// Pagefind is generated at build time into the static dir.
 			// We must use dynamic import with a full URL to avoid Vite's static analysis.
-			const pagefindUrl = `${window.location.origin}/pagefind/pagefind.js`;
+			const pagefindUrl = `${window.location.origin}${base}/pagefind/pagefind.js`;
 			pagefind = await import(/* @vite-ignore */ pagefindUrl);
 			await pagefind.init();
 		} catch {

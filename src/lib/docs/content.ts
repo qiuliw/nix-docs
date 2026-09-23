@@ -1,3 +1,4 @@
+import { base } from '$app/paths';
 import { docsConfig } from './config.js';
 import type { DocFile, DocMeta, DocPage } from './types.js';
 
@@ -32,7 +33,7 @@ function buildDocs(modules: Record<string, DocFile>, prefix: string, hrefPrefix:
 		const slug = slugFromPath(path, prefix);
 		docs.push({
 			slug,
-			href: slug ? `${hrefPrefix}/${slug}` : hrefPrefix,
+			href: slug ? `${base}${hrefPrefix}/${slug}` : `${base}${hrefPrefix}`,
 			meta: {
 				title: meta?.title ?? slug.split('/').pop() ?? '',
 				description: meta?.description ?? '',
@@ -79,6 +80,6 @@ export function getRawContent(slug: string): string {
 
 export function getDocsByDirectory(directory: string, locale?: string): DocPage[] {
 	return getAllDocs(locale).filter(
-		(doc) => doc.slug.startsWith(directory + '/') || doc.slug === directory
+		(doc) => doc.slug === directory || doc.slug.startsWith(`${directory}/`)
 	);
 }
