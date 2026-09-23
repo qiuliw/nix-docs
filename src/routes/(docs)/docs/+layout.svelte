@@ -1,20 +1,10 @@
 <script lang="ts">
-	import { page } from '$app/state';
 	import Header from '$lib/components/layout/header.svelte';
 	import SidebarLeft from '$lib/components/layout/sidebar-left.svelte';
 	import SidebarRight from '$lib/components/layout/sidebar-right.svelte';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
-	import { docsConfig, getNavigation } from '$lib/docs/index.js';
-	import { getLocaleFromPath } from '$lib/docs/locale.js';
 
-	let { children } = $props();
-
-	// Parent layout always used to load default-locale nav only, so the Chinese
-	// route kept showing a Japanese sidebar (and Japanese hrefs). Derive from URL.
-	let locale = $derived(getLocaleFromPath(page.url.pathname));
-	let navigation = $derived(
-		getNavigation(locale === docsConfig.i18n?.defaultLocale ? undefined : locale)
-	);
+	let { children, data } = $props();
 </script>
 
 <a
@@ -25,7 +15,8 @@
 </a>
 <Sidebar.Provider>
 	<SidebarLeft
-		{navigation}
+		navigation={data.navigation}
+		locale={data.locale}
 		socialLinks={[{ platform: 'github', url: 'https://github.com/qiuliw/nix-docs' }]}
 	/>
 	<Sidebar.Inset>

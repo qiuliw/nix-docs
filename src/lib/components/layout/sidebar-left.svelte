@@ -18,11 +18,16 @@
 	let {
 		navigation = [],
 		socialLinks = [],
+		locale: localeProp,
 		ref = $bindable(null),
 		...restProps
-	}: ComponentProps<typeof Sidebar.Root> & { navigation?: NavItem[]; socialLinks?: SocialLink[] } = $props();
+	}: ComponentProps<typeof Sidebar.Root> & {
+		navigation?: NavItem[];
+		socialLinks?: SocialLink[];
+		locale?: string;
+	} = $props();
 
-	let locale = $derived(getLocaleFromPath(page.url.pathname));
+	let locale = $derived(localeProp ?? getLocaleFromPath(page.url.pathname));
 	let homeHref = $derived(docsHomeHref(locale));
 	let docsLabel = $derived(locale === 'zh' ? '文档' : 'ドキュメント');
 
