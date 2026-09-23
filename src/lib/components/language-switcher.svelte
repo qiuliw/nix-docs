@@ -4,9 +4,18 @@
 	import { getLocaleFromPath, hrefForLocale } from '$lib/docs/locale.js';
 	import { cn } from '$lib/utils.js';
 
+	let {
+		locale: localeProp,
+		pathname: pathnameProp
+	}: {
+		locale?: string;
+		pathname?: string;
+	} = $props();
+
 	let i18n = docsConfig.i18n;
 
-	let currentLocale = $derived(getLocaleFromPath(page.url.pathname));
+	let pathname = $derived(pathnameProp ?? page.url.pathname);
+	let currentLocale = $derived(localeProp ?? getLocaleFromPath(pathname));
 </script>
 
 {#if i18n && i18n.locales.length > 1}
@@ -18,7 +27,7 @@
 		{#each i18n.locales as locale (locale.code)}
 			{@const active = currentLocale === locale.code}
 			<a
-				href={hrefForLocale(page.url.pathname, locale.code)}
+				href={hrefForLocale(pathname, locale.code)}
 				class={cn(
 					'rounded-sm px-2.5 py-1 font-medium transition-colors',
 					active

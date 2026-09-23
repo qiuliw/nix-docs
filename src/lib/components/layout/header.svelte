@@ -5,7 +5,15 @@
 	import LanguageSwitcher from "$lib/components/language-switcher.svelte";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 
-	let { socialLinks = [] }: { socialLinks?: SocialLink[] } = $props();
+	let {
+		socialLinks = [],
+		locale,
+		pathname
+	}: {
+		socialLinks?: SocialLink[];
+		locale?: string;
+		pathname?: string;
+	} = $props();
 </script>
 
 <header class="bg-background sticky top-0 z-50 flex h-14 shrink-0 flex-row items-center justify-between border-b px-3">
@@ -17,7 +25,7 @@
 		<div class="hidden items-center md:flex">
 			<SocialLinks links={socialLinks} />
 		</div>
-		<LanguageSwitcher />
+		<LanguageSwitcher {locale} {pathname} />
 		<DarkModeSwitcher />
 	</div>
 </header>

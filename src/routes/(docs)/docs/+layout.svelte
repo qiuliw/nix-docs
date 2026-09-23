@@ -20,7 +20,11 @@
 		socialLinks={[{ platform: 'github', url: 'https://github.com/qiuliw/nix-docs' }]}
 	/>
 	<Sidebar.Inset>
-		<Header socialLinks={[{ platform: 'github', url: 'https://github.com/qiuliw/nix-docs' }]} />
+		<Header
+			socialLinks={[{ platform: 'github', url: 'https://github.com/qiuliw/nix-docs' }]}
+			locale={data.locale}
+			pathname={data.pathname}
+		/>
 		<div class="flex flex-1 flex-col gap-4 p-4">
 			{@render children()}
 		</div>

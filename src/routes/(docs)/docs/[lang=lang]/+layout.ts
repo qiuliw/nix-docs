@@ -4,7 +4,7 @@ import type { LayoutLoad } from './$types.js';
 
 export const prerender = true;
 
-export const load: LayoutLoad = ({ params }) => {
+export const load: LayoutLoad = ({ params, url }) => {
 	const locale = params.lang;
 	const i18n = docsConfig.i18n;
 	const validLocales = i18n?.locales.map((l) => l.code) ?? [];
@@ -16,5 +16,5 @@ export const load: LayoutLoad = ({ params }) => {
 	}
 
 	const navigation = getNavigation(locale);
-	return { navigation, locale };
+	return { navigation, locale, pathname: url.pathname };
 };
