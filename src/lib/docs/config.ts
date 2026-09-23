@@ -1,11 +1,12 @@
-import RocketIcon from '@lucide/svelte/icons/rocket';
 import BookOpenIcon from '@lucide/svelte/icons/book-open';
+import FlaskConicalIcon from '@lucide/svelte/icons/flask-conical';
+import NewspaperIcon from '@lucide/svelte/icons/newspaper';
 import type { DocsConfig } from './types.js';
 
 export const docsConfig: DocsConfig = {
 	site: {
 		title: 'Nix Docs',
-		description: 'Nix documentation built with SvelteKit.',
+		description: 'asa1984 の Zenn 記事・本をまとめた Nix ドキュメント',
 		url: 'https://qiuliw.github.io/nix-docs',
 		social: {
 			github: 'https://github.com/qiuliw/nix-docs'
@@ -13,33 +14,27 @@ export const docsConfig: DocsConfig = {
 	},
 	sidebar: [
 		{
-			label: 'Getting Started',
-			icon: RocketIcon,
-			autogenerate: { directory: 'getting-started' }
+			label: 'Nix入門',
+			icon: BookOpenIcon,
+			autogenerate: { directory: 'nix-introduction' }
 		},
 		{
-			label: 'Guides',
-			icon: BookOpenIcon,
-			autogenerate: { directory: 'guides' }
+			label: 'Nix入門: ハンズオン編',
+			icon: FlaskConicalIcon,
+			autogenerate: { directory: 'nix-hands-on' }
+		},
+		{
+			label: '記事',
+			icon: NewspaperIcon,
+			autogenerate: { directory: 'articles' }
 		}
 	],
 	toc: {
 		minDepth: 2,
 		maxDepth: 3
 	},
-	// Uncomment to enable version selector in the sidebar header:
-	// versions: {
-	// 	current: 'v1.0.0',
-	// 	versions: [
-	// 		{ label: 'v1.0.0 (latest)', href: '/docs' },
-	// 		{ label: 'v0.x', href: 'https://v0.example.com/docs' }
-	// 	]
-	// },
 	i18n: {
-		defaultLocale: 'en',
-		locales: [
-			{ code: 'en', label: 'English', flag: '🇺🇸' },
-			{ code: 'es', label: 'Español', flag: '🇪🇸' }
-		]
+		defaultLocale: 'ja',
+		locales: [{ code: 'ja', label: '日本語', flag: '🇯🇵' }]
 	}
 };
