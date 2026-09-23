@@ -34,6 +34,23 @@ export function docsHomeHref(locale?: string): string {
 	return `${base}${path}`;
 }
 
+export function isDocsPath(pathname: string): boolean {
+	const parts = appPathname(pathname).split('/').filter(Boolean);
+	return parts[0] === 'docs';
+}
+
+/** Landing page locale: `/` is Chinese, `/ja` is Japanese. */
+export function getHomeLocaleFromPath(pathname: string): 'zh' | 'ja' {
+	const parts = appPathname(pathname).split('/').filter(Boolean);
+	return parts[0] === 'ja' ? 'ja' : 'zh';
+}
+
+/** Home URL for a locale (includes kit base). */
+export function homeHrefForLocale(code: string): string {
+	if (code === 'ja') return `${base}/ja`;
+	return base ? `${base}/` : '/';
+}
+
 /** Map current docs path to the same page in another locale (includes kit base). */
 export function hrefForLocale(pathname: string, code: string): string {
 	const i18n = docsConfig.i18n;
