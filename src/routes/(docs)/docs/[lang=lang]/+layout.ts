@@ -4,7 +4,7 @@ import type { LayoutLoad } from './$types.js';
 
 export const prerender = true;
 
-export const load: LayoutLoad = ({ params, url }) => {
+export const load: LayoutLoad = ({ params }) => {
 	const locale = params.lang;
 	const i18n = docsConfig.i18n;
 	const validLocales = i18n?.locales.map((l) => l.code) ?? [];
@@ -16,5 +16,7 @@ export const load: LayoutLoad = ({ params, url }) => {
 	}
 
 	const navigation = getNavigation(locale);
-	return { navigation, locale, pathname: url.pathname };
+	// Do not return pathname here — during prerender this layout load can be
+	// keyed by lang only and would overwrite the page's full path with /docs/{lang}.
+	return { navigation, locale };
 };

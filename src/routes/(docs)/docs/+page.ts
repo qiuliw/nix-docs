@@ -1,12 +1,13 @@
 import { getDoc } from '$lib/docs/index.js';
 import { error } from '@sveltejs/kit';
 
-export function load() {
+export function load({ url }: { url: URL }) {
 	const doc = getDoc('');
 	if (!doc) throw error(404, 'Documentation index not found');
 
 	return {
 		meta: doc.meta,
-		slug: ''
+		slug: '',
+		pathname: url.pathname
 	};
 }

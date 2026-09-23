@@ -20,7 +20,7 @@ export function entries() {
 	return results;
 }
 
-export const load: PageLoad = ({ params }) => {
+export const load: PageLoad = ({ params, url }) => {
 	const doc = getDoc(params.slug, params.lang);
 	if (!doc) throw error(404, `Page not found: ${params.slug}`);
 
@@ -30,6 +30,7 @@ export const load: PageLoad = ({ params }) => {
 		meta: doc.meta,
 		slug: params.slug,
 		locale: params.lang,
+		pathname: url.pathname,
 		prev,
 		next
 	};
