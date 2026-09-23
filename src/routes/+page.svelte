@@ -11,21 +11,30 @@
 	const sections = [
 		{
 			icon: BookOpenIcon,
-			title: 'Nix入門',
-			description: 'Nix のコンセプトと仕組みを体系的に学ぶ本編。',
-			href: '/docs/nix-introduction/01-introduction'
+			titleJa: 'Nix入門',
+			titleZh: 'Nix 入门',
+			descriptionJa: 'Nix のコンセプトと仕組みを体系的に学ぶ本編。',
+			descriptionZh: '系统学习 Nix 的概念与机制。',
+			href: '/docs/nix-introduction/01-introduction' as const,
+			hrefZh: '/docs/zh/nix-introduction/01-introduction' as const
 		},
 		{
 			icon: FlaskConicalIcon,
-			title: 'ハンズオン編',
-			description: 'CLI・言語・ビルドまで、手を動かしながら学ぶ。',
-			href: '/docs/nix-hands-on/introduction'
+			titleJa: 'ハンズオン編',
+			titleZh: '实战篇',
+			descriptionJa: 'CLI・言語・ビルドまで、手を動かしながら学ぶ。',
+			descriptionZh: '动手学习 CLI、语言与构建。',
+			href: '/docs/nix-hands-on/introduction' as const,
+			hrefZh: '/docs/zh/nix-hands-on/introduction' as const
 		},
 		{
 			icon: NewspaperIcon,
-			title: '記事',
-			description: 'NixOS デスクトップやバイナリキャッシュなどの記事。',
-			href: '/docs/articles/nixos-is-the-best'
+			titleJa: '記事',
+			titleZh: '文章',
+			descriptionJa: 'NixOS デスクトップやバイナリキャッシュなどの記事。',
+			descriptionZh: 'NixOS 桌面、二进制缓存等相关文章。',
+			href: '/docs/articles/nixos-is-the-best' as const,
+			hrefZh: '/docs/zh/articles/nixos-is-the-best' as const
 		}
 	];
 </script>
@@ -34,7 +43,7 @@
 	<title>Nix Docs</title>
 	<meta
 		name="description"
-		content="asa1984 の Zenn 記事・本をまとめた Nix ドキュメント"
+		content="asa1984 的 Zenn 文章与书籍整理的 Nix 文档（日文原文 + 中文翻译）"
 	/>
 </svelte:head>
 
@@ -45,7 +54,8 @@
 				>Nix Docs</a
 			>
 			<div class="flex items-center gap-1">
-				<Button variant="ghost" size="sm" href={resolve('/docs')}>Docs</Button>
+				<Button variant="ghost" size="sm" href={resolve('/docs')}>日文</Button>
+				<Button variant="ghost" size="sm" href={resolve('/docs/zh')}>中文</Button>
 				<Button
 					variant="ghost"
 					size="icon"
@@ -61,20 +71,34 @@
 	</header>
 
 	<main class="mx-auto max-w-5xl px-4 py-20 sm:py-28">
-		<p class="text-muted-foreground mb-4 text-sm">based on asa1984/zenn-articles</p>
+		<p class="text-muted-foreground mb-4 text-sm">based on asa1984/zenn-articles · 日本語 / 中文</p>
 		<h1 class="text-foreground mb-4 text-4xl font-bold tracking-tight sm:text-5xl">Nix Docs</h1>
-		<p class="text-muted-foreground mb-10 max-w-2xl text-lg">
+		<p class="text-muted-foreground mb-4 max-w-2xl text-lg">
 			<a
 				href="https://github.com/asa1984"
 				class="text-foreground underline-offset-4 hover:underline"
 				target="_blank"
 				rel="noopener noreferrer">asa1984</a
 			>
-			さんの Zenn 記事・本を、静的ドキュメントサイトとしてまとめたものです。
+			さんの Zenn 記事・本をまとめた Nix ドキュメントです。中文翻译已提供。
+		</p>
+		<p class="text-muted-foreground mb-10 max-w-2xl text-lg">
+			整理自
+			<a
+				href="https://github.com/asa1984"
+				class="text-foreground underline-offset-4 hover:underline"
+				target="_blank"
+				rel="noopener noreferrer">asa1984</a
+			>
+			的 Zenn 文章与书籍；提供日文原文与中文翻译。
 		</p>
 		<div class="mb-16 flex flex-wrap gap-3">
 			<Button size="lg" href={resolve('/docs')} class="gap-2">
-				ドキュメントを読む
+				日文ドキュメント
+				<ArrowRightIcon class="size-4" />
+			</Button>
+			<Button size="lg" href={resolve('/docs/zh')} variant="secondary" class="gap-2">
+				阅读中文文档
 				<ArrowRightIcon class="size-4" />
 			</Button>
 			<Button
@@ -84,28 +108,31 @@
 				target="_blank"
 				class="gap-2"
 			>
-				原文リポジトリ
+				原文仓库
 			</Button>
 		</div>
 
 		<div class="grid gap-6 sm:grid-cols-3">
 			{#each sections as section}
 				{@const Icon = section.icon}
-				<a
-					href={resolve(section.href)}
-					class="hover:bg-muted/50 block rounded-xl border p-5 transition-colors"
-				>
+				<div class="rounded-xl border p-5">
 					<Icon class="text-primary mb-3 size-5" />
-					<h2 class="text-foreground mb-2 font-semibold">{section.title}</h2>
-					<p class="text-muted-foreground text-sm leading-relaxed">{section.description}</p>
-				</a>
+					<h2 class="text-foreground mb-1 font-semibold">{section.titleZh}</h2>
+					<p class="text-muted-foreground mb-1 text-xs">{section.titleJa}</p>
+					<p class="text-muted-foreground mb-4 text-sm leading-relaxed">{section.descriptionZh}</p>
+					<div class="flex gap-3 text-sm">
+						<a href={resolve(section.hrefZh)} class="text-primary hover:underline">中文</a>
+						<a href={resolve(section.href)} class="text-muted-foreground hover:underline">日本語</a>
+					</div>
+				</div>
 			{/each}
 		</div>
 	</main>
 
 	<footer class="border-t py-8">
 		<p class="text-muted-foreground mx-auto max-w-5xl px-4 text-sm">
-			原文 © <a
+			原文 ©
+			<a
 				href="https://github.com/asa1984"
 				class="text-foreground hover:underline"
 				target="_blank"

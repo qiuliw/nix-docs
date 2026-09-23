@@ -16,15 +16,13 @@
 	<SidebarLeft
 		navigation={data.navigation}
 		socialLinks={[
-			{ platform: "github", url: "https://github.com/code-gio/svelte-docs-starter" },
-			{ platform: "twitter", url: "https://twitter.com" },
+			{ platform: "github", url: "https://github.com/qiuliw/nix-docs" },
 		]}
 	/>
 	<Sidebar.Inset>
 		<Header
 			socialLinks={[
-				{ platform: "github", url: "https://github.com/code-gio/svelte-docs-starter" },
-				{ platform: "twitter", url: "https://twitter.com" },
+				{ platform: "github", url: "https://github.com/qiuliw/nix-docs" },
 			]}
 		/>
 		<div class="flex flex-1 flex-col gap-4 p-4">

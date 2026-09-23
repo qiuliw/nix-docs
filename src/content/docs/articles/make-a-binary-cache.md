@@ -20,7 +20,7 @@ https://zenn.dev/asa1984/books/nix-introduction/viewer/07-binary-cache
 
 ### 公式のバイナリキャッシュ
 
-Nixpkgs は [cache.nixos.org](cache.nixos.org) からバイナリキャッシュを提供しており、Nix はデフォルトでこのバイナリキャッシュストアを利用するように設定されています。Nixpkgs に登録されたパッケージは [Hydra](https://github.com/NixOS/hydra) という CI システムでビルドされた後、AWS S3 でホストされたバイナリキャッシュストアに保存されます。
+Nixpkgs は [cache.nixos.org](https://cache.nixos.org/) からバイナリキャッシュを提供しており、Nix はデフォルトでこのバイナリキャッシュストアを利用するように設定されています。Nixpkgs に登録されたパッケージは [Hydra](https://github.com/NixOS/hydra) という CI システムでビルドされた後、AWS S3 でホストされたバイナリキャッシュストアに保存されます。
 
 世界最大のオープンソースパッケージリポジトリである Nixpkgs のバイナリキャッシュストアは当然ながら非常に巨大で、2022年時点でホストされているオブジェクトは**6億個超**（合計**425TiB**）に上り^[[NixOS Foundation's Financial Summary: A Transparent Look into 2022 - Meta / NixOS Foundation - NixOS Discourse](https://discourse.nixos.org/t/nixos-foundations-financial-summary-a-transparent-look-into-2022/28107/16)]、2023年の S3 の月間コストは**約14,500ドル**^[[NixOS Foundation Financial Summary : A Transparent Look into 2023 - Meta / NixOS Foundation - NixOS Discourse](https://discourse.nixos.org/t/nixos-foundation-financial-summary-a-transparent-look-into-2023/43640)]だったそうです。ヤバ…
 

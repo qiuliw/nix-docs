@@ -65,6 +65,8 @@ export interface DocsConfig {
 
 export interface SidebarSection {
 	label: string;
+	/** Optional per-locale sidebar labels, e.g. { zh: 'Nix 入门' } */
+	labels?: Record<string, string>;
 	autogenerate?: { directory: string };
 	items?: { label: string; href: string }[];
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any

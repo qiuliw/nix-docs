@@ -1,25 +1,27 @@
 # Nix Docs
 
-[asa1984/zenn-articles](https://github.com/asa1984/zenn-articles) の内容をベースにした Nix ドキュメントサイトです。
+基于 [asa1984/zenn-articles](https://github.com/asa1984/zenn-articles) 的 Nix 文档站点，提供**日文原文**与**简体中文翻译**。
 
-**サイト:** https://qiuliw.github.io/nix-docs/
+**站点:** https://qiuliw.github.io/nix-docs/
+
+- 日文：https://qiuliw.github.io/nix-docs/docs
+- 中文：https://qiuliw.github.io/nix-docs/docs/zh
 
 ## 内容
 
-- **Nix入門** — Nix のコンセプトと仕組み
-- **Nix入門: ハンズオン編** — CLI / 言語 / ビルドの実践
-- **記事** — NixOS デスクトップ、バイナリキャッシュなど
+- **Nix 入门** — Nix 的概念与机制
+- **Nix 入门：实战篇** — CLI / 语言 / 构建实践
+- **文章** — NixOS 桌面、二进制缓存等
 
-## 開発
+## 开发
 
 ```bash
 npm install
 npm run dev
 ```
 
-GitHub Pages へのデプロイは `main` への push で Actions が実行します。
+推送到 `main` 后，GitHub Actions 会自动部署到 GitHub Pages。
 
-## クレジット
+## 致谢
 
-原文の著作権は [asa1984](https://github.com/asa1984) に帰属します。
-サイトテンプレートは [svelte-docs-starter](https://github.com/code-gio/svelte-docs-starter) をベースにしています。
+原文著作权归 [asa1984](https://github.com/asa1984) 所有。中文翻译由本仓库维护。站点模板基于 [svelte-docs-starter](https://github.com/code-gio/svelte-docs-starter)。

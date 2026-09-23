@@ -16,14 +16,16 @@ export function generateNavigation(locale?: string): NavItem[] {
 
 			items.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
+			const localeKey = locale ?? docsConfig.i18n?.defaultLocale ?? 'ja';
 			nav.push({
-				title: section.label,
+				title: section.labels?.[localeKey] ?? section.label,
 				icon: section.icon,
 				items
 			});
 		} else if (section.items) {
+			const localeKey = locale ?? docsConfig.i18n?.defaultLocale ?? 'ja';
 			nav.push({
-				title: section.label,
+				title: section.labels?.[localeKey] ?? section.label,
 				icon: section.icon,
 				items: section.items.map((item) => ({
 					title: item.label,

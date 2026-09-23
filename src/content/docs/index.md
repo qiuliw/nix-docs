@@ -6,11 +6,13 @@ order: 0
 
 このサイトは [asa1984/zenn-articles](https://github.com/asa1984/zenn-articles) の内容をベースにした Nix ドキュメントです。
 
+[中文版はこちら](/docs/zh)
+
 ## コンテンツ
 
-- [Nix入門](./nix-introduction/01-introduction) — Nix のコンセプトと仕組み
-- [Nix入門: ハンズオン編](./nix-hands-on/introduction) — 手を動かしながら学ぶ
-- [記事](./articles/nixos-is-the-best) — 関連記事
+- [Nix入門](/docs/nix-introduction/01-introduction) — Nix のコンセプトと仕組み
+- [Nix入門: ハンズオン編](/docs/nix-hands-on/introduction) — 手を動かしながら学ぶ
+- [記事](/docs/articles/nixos-is-the-best) — 関連記事
 
 ## クレジット
 
