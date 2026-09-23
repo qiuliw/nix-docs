@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { page } from "$app/state";
-	import { resolve } from "$app/paths";
 	import * as Collapsible from "$lib/components/ui/collapsible/index.js";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import { docsConfig } from "$lib/docs/config.js";
+	import { docsHomeHref, getLocaleFromPath } from "$lib/docs/locale.js";
 	import type { NavItem } from "$lib/docs/types.js";
 	import { goto } from "$app/navigation";
 	import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
@@ -21,6 +21,10 @@
 		ref = $bindable(null),
 		...restProps
 	}: ComponentProps<typeof Sidebar.Root> & { navigation?: NavItem[]; socialLinks?: SocialLink[] } = $props();
+
+	let locale = $derived(getLocaleFromPath(page.url.pathname));
+	let homeHref = $derived(docsHomeHref(locale));
+	let docsLabel = $derived(locale === 'zh' ? '文档' : 'Documentation');
 
 	function isActive(href: string | undefined): boolean {
 		if (!href) return false;
@@ -78,7 +82,7 @@
 				{:else}
 					<Sidebar.MenuButton size="lg">
 						{#snippet child({ props })}
-							<a href={resolve("/docs")} {...props}>
+							<a href={homeHref} {...props}>
 								<div
 									class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
 								>
@@ -97,7 +101,7 @@
 	</Sidebar.Header>
 	<Sidebar.Content>
 		<Sidebar.Group>
-			<Sidebar.GroupLabel>Documentation</Sidebar.GroupLabel>
+			<Sidebar.GroupLabel>{docsLabel}</Sidebar.GroupLabel>
 			<Sidebar.Menu>
 				{#each navigation as section (section.title)}
 					<Collapsible.Root open={sectionHasActive(section)} class="group/collapsible">

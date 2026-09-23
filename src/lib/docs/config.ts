@@ -6,7 +6,7 @@ import type { DocsConfig } from './types.js';
 export const docsConfig: DocsConfig = {
 	site: {
 		title: 'Nix Docs',
-		description: 'asa1984 的 Zenn 文章与书籍整理的 Nix 文档（日文原文 + 中文翻译）',
+		description: 'asa1984 的 Zenn 文章与书籍整理的 Nix 文档',
 		url: 'https://qiuliw.github.io/nix-docs',
 		social: {
 			github: 'https://github.com/qiuliw/nix-docs'

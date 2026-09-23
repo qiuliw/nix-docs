@@ -6,8 +6,6 @@ order: 0
 
 このサイトは [asa1984/zenn-articles](https://github.com/asa1984/zenn-articles) の内容をベースにした Nix ドキュメントです。
 
-[中文版はこちら](/docs/zh)
-
 ## コンテンツ
 
 - [Nix入門](/docs/nix-introduction/01-introduction) — Nix のコンセプトと仕組み

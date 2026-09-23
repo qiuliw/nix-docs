@@ -1,12 +1,10 @@
 ---
-title: "Nix Docs 中文版"
-description: "asa1984 的 Zenn 文章与书籍整理而成的 Nix 文档（简体中文翻译）"
+title: "Nix Docs"
+description: "asa1984 的 Zenn 文章与书籍整理而成的 Nix 文档"
 order: 0
 ---
 
-本站是基于 [asa1984/zenn-articles](https://github.com/asa1984/zenn-articles) 内容整理而成的 Nix 文档，此处为**简体中文翻译版**。
-
-[日文原文](/docs)
+本站基于 [asa1984/zenn-articles](https://github.com/asa1984/zenn-articles) 整理 Nix 相关文档。
 
 ## 内容
 
@@ -16,4 +14,4 @@ order: 0
 
 ## 致谢
 
-原文著作权归 [asa1984](https://github.com/asa1984) 所有。本中文版为社区翻译，如有译文问题，责任在译者而非原作者。
+原文著作权归 [asa1984](https://github.com/asa1984) 所有。

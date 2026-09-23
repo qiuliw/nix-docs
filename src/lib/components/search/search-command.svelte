@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
+	import { page } from "$app/state";
 	import { base } from "$app/paths";
 	import SearchIcon from "@lucide/svelte/icons/search";
 	import FileTextIcon from "@lucide/svelte/icons/file-text";
 	import { Button } from "$lib/components/ui/button/index.js";
 	import * as Command from "$lib/components/ui/command/index.js";
 	import { getNavigation } from "$lib/docs/index.js";
+	import { getLocaleFromPath } from "$lib/docs/locale.js";
 
 	interface PagefindResult {
 		url: string;
@@ -20,7 +22,7 @@
 	let pagefind: any = $state(null);
 	let searching = $state(false);
 
-	const navigation = getNavigation();
+	let navigation = $derived(getNavigation(getLocaleFromPath(page.url.pathname)));
 
 	async function loadPagefind() {
 		if (pagefind) return;
